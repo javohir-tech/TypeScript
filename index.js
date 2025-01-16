@@ -2,38 +2,36 @@
 // Typescriptda tiplarni o'zgartirish va birlashtrish.
 // unknown type, union types, literal types, type aliases, required and optional properties, operator in
 //havfli usul
-let a = 10;
+let a = 12;
 let b = a;
-//havfsiz usul
-let c = 10;
-let d = c;
-// console.log(typeof d);
+let c = 11.123;
+// let d:number = c
+let e = c;
 let f = c;
 c.toFixed(2);
-c.toString();
-//union types
-let g;
-g = "str";
-g = 20;
-g = true;
-//literal types
-let h;
-h = "sm";
-h = "md";
-h = "sm";
+c.toFixed(2);
+//union type
+let h = 10;
 h = 12;
+//literal types
+let s;
+s = "sm";
+s = false;
 let size;
-size = false;
-size = "sm";
-size = "md";
-let obj;
-obj = { name: "Javohir" };
-obj = { age: 20 };
-obj = { name: "Javohir", age: 20 };
+size = true;
+size = "MD";
+// console.log(size)
+//objects
+let obj = { name: "Javohir", age: 20 };
+obj = { name: "Javohir", age: 21 };
 let obj2;
-obj2 = { name: "javohir", age: 20 };
-console.log(obj2);
-if ("age" in obj2) {
+obj2 = { name: "Javohir", age: 20 };
+let obj3;
+obj = { name: "javohir", age: 20 };
+let obj4;
+obj4 = { name: "javohir", age: 20 };
+// console.log(obj4)
+if ("age" in obj4) {
     console.log("mavjud");
 }
 else {
