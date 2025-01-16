@@ -53,7 +53,8 @@ console.log(H.A, H.B)
 
 const enum I {
     A = "salom",
-    B = 10
+    B = 10,
+    C = 23
 }
 
 console.log(I.A, I.B)
