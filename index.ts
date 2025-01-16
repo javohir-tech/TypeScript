@@ -1,66 +1,60 @@
-// array kortejlar enum
+// array tuples  enums
 let a = [];
-a = [12, "salom", true, undefined, {}];
+a = [1, 2, true, "salom"];
 
-// let b = [1, 2, 3, 4];
-// b= [12, 23, 45]
+let b = [1, 2, 3, 5];
+b= [34, 34, 23];
 
-let c: number[] = [12, 13];
-c = [2, 3];
-// console.log(c)
-// c= [true, "salom/"]
+let c:number[];
+c=[12, 23]
 
-let d: Array<string>;
-d = ["salom", "TypeScript"];
-// console.log(d)
+let d :Array<number>
+d= [12]
 
-let e: (number | string | boolean)[];
-e = ["salom", 12, true, false];
+let e: (number | string)[];
+// e = [12, "sallom", true]
 
-let f: Array<number | string>;
-f = [12, "salom"];
-// f= [12, "salom", true];
+let f: Array<number | boolean > ;
+// f= [true, 2, "salom"]
 
-//================================================
-//tuples
+//===================================
+//tuples - kartejlar 
+let h: [number, string]
+h= [12, "salom"]
+// h= ["salom", 12]
 
-let h: [number, string];
-h = [12, "salom"];
+let g : [number, [string, number, boolean]];
+g= [12, ["salom", 12,  false]];
 
-let g: [number, [string, number]];
-g = [12, ["salom", 12]];
-// console.log(g)
-
-// ================================================
-// qayta hisoblash - Enums
-
+//======================================================
+//enums
 enum Gender {
-  Male,
-  Female,
+    Male = "Erkak", 
+    Female = "Ayol"
 }
 
 // console.log(Gender.Male, Gender.Female)
 // console.log(Gender[Gender.Male], Gender[Gender.Female])
 
 enum G {
-  A = 10,
-  B = 20,
-  C,
-  D,
+    A = 10, 
+    B, 
+    C =23, 
+    D
 }
 
-// console.log(G.A, G.B, G.C, G.D);
+// console.log(G[G.A], G.B, G.C, G.D)
 
-enum Salom {
-  Salom,
-  TypeScript
+enum H {
+    A = "Salom",
+    B = "TypeScipt"
 }
-
-// console.log(Salom[Salom.Salom], Salom[Salom.TypeScript])
+console.log(H.A, H.B)
 
 const enum I {
-    A = 10,
-    B = "Salom"
+    A = "salom",
+    B = 10
 }
-//========================  
-console.group(I.A, I.B)
+
+console.log(I.A, I.B)
+// console.log(I[I.A], I[I.B])
