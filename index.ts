@@ -1,62 +1,66 @@
-// Typescriptda tiplarni o'zgartirish va birlashtrish.
-// unknown type, union types, literal types, type aliases, required and optional properties, operator in
+// array kortejlar enum
+let a = [];
+a = [12, "salom", true, undefined, {}];
 
-//havfli usul
-let a: any = 12;
-let b: number = a;
+// let b = [1, 2, 3, 4];
+// b= [12, 23, 45]
 
-let c: unknown = 11.123;
-// let d:number = c
+let c: number[] = [12, 13];
+c = [2, 3];
+// console.log(c)
+// c= [true, "salom/"]
 
-let e: number = <number>c;
-let f: number = c as number;
+let d: Array<string>;
+d = ["salom", "TypeScript"];
+// console.log(d)
 
-(<number>c).toFixed(2);
-(c as number).toFixed(2);
+let e: (number | string | boolean)[];
+e = ["salom", 12, true, false];
 
-//union type
-let h: number | string | boolean = 10;
-h = 12;
+let f: Array<number | string>;
+f = [12, "salom"];
+// f= [12, "salom", true];
 
-//literal types
-let s: "sm" | "md" | "lg" | boolean;
-s = "sm";
-s = false;
-// s=12.
+//================================================
+//tuples
 
-// console.log(s)
+let h: [number, string];
+h = [12, "salom"];
 
-// type aliases
+let g: [number, [string, number]];
+g = [12, ["salom", 12]];
+// console.log(g)
 
-type Size = "SM" | "MD" | "Xl" | "LG" | boolean;
-let size: Size;
-size = true;
-size ="MD"
-// console.log(size)
+// ================================================
+// qayta hisoblash - Enums
 
-//objects
-
-let obj : {name: string, age: number  } = {name: "Javohir", age: 20}
-obj = {name: "Javohir", age:21}
-// console.log(obj)
-
-type OBJ = {name:string} | {age:number}
-let obj2 : OBJ;
-obj2 = {name:"Javohir", age:20}
-// console.log(obj2)
-
-type OBJ2 = {name:string} & {age: number};
-let obj3 : OBJ2; 
-obj = {name:"javohir", age: 20}
-
-type OBJ3 = {name:string , age?:number}
-let obj4 : OBJ3;
-obj4 = {name:"javohir" , age: 20}
-// console.log(obj4)
-
-if("age" in obj4){
-    console.log("mavjud")
-}else{
-    console.log("mavjud emas")
+enum Gender {
+  Male,
+  Female,
 }
 
+// console.log(Gender.Male, Gender.Female)
+// console.log(Gender[Gender.Male], Gender[Gender.Female])
+
+enum G {
+  A = 10,
+  B = 20,
+  C,
+  D,
+}
+
+// console.log(G.A, G.B, G.C, G.D);
+
+enum Salom {
+  Salom,
+  TypeScript
+}
+
+// console.log(Salom[Salom.Salom], Salom[Salom.TypeScript])
+
+const enum I {
+    A = 10,
+    B = "Salom"
+}
+//========================  
+console.group(I.A, I.B)
