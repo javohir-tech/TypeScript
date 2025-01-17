@@ -1,21 +1,14 @@
 "use strict";
-class Car {
-    constructor(name, year) {
-        this._name = "Nexia";
-        this._year = 2014;
+class Person {
+    constructor(name, age) {
         this._name = name;
-        this._year = year;
+        this._age = age;
     }
-    //methods
-    info(value) {
-        return `${this._name} moshinasi ${this._year + value} yilda ishlap chiqarilgan`;
-    }
-    //methods 2
-    info2(text) {
-        return `${this._name} ${text} ${this._year} yilda ishlap chiqarilgan `;
+    info() {
+        return `${this._name} ${this._age} yoshda`;
     }
     static description() {
-        return `bu class haqida malumot beradigan qism `;
+        return `bu class haqida malumot beradigan cali soz static`;
     }
     get name() {
         return this._name;
@@ -23,32 +16,32 @@ class Car {
     set name(value) {
         this._name = value;
     }
-    get year() {
-        return this._year;
+    get age() {
+        return this._age;
     }
-    set year(value) {
-        if (this._name === "Cobolt TwinTurbo") {
-            if (value > 2000 && value < 2014) {
-                this._year = value;
-            }
-            else {
-                console.log("Nexia rusumli avtomobillar siz kiritgan yilda ishlap chiqarilmagan ");
-            }
+    set age(value) {
+        if (value > 0 && value < 1000) {
+            this._age = value;
+        }
+        else {
+            console.log("siz kiritgan yosh togri kelmaydi ");
         }
     }
 }
-//statics class haqida malumot berish uchun ishlatiladi 
-Car.isFlaying = false;
-const Nexia = new Car("Nexia", 2014);
-const Cobolt = new Car("Cobolt", 2022);
-// console.log(Nexia);
-console.log(Cobolt);
-Cobolt.name = "Cobolt TwinTurbo";
-Cobolt.year = 2013;
-console.log(Cobolt);
-// if(Nexia instanceof Car){
-//     console.log("Tegishli")
-// }else{
-//     console.log("Tegishli emas")
-// }
+Person.isFlaying = false;
+const Javohir = new Person("Javohir", 20);
+// const Shox = new Person("Shox", 20);
+console.log(Javohir);
+Javohir.name = "Suvonov";
+Javohir.age = 21;
+console.log(Javohir);
+// console.log(Shox)
+// console.log(Person.isFlaying)
+// console.log(Person.description())
+if (Javohir instanceof Person) {
+    console.log("Tegishli");
+}
+else {
+    console.log("Tegishli emas");
+}
 //# sourceMappingURL=index.js.map
