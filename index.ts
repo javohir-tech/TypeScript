@@ -1,61 +1,62 @@
-// array tuples  enums
-let a = [];
-a = [1, 2, true, "salom"];
+class Car {
+  _name: string = "Nexia";
+  _year: number = 2014;
+  constructor(name: string, year: number) {
+    this._name = name
+    this._year = year
+  }
 
-let b = [1, 2, 3, 5];
-b= [34, 34, 23];
+  //methods
+  info(value:number): string{
+    return `${this._name} moshinasi ${this._year + value} yilda ishlap chiqarilgan`
+  }
 
-let c:number[];
-c=[12, 23]
+  //methods 2
+  info2(text:string):string{
+    return `${this._name} ${text} ${this._year} yilda ishlap chiqarilgan `
+  }
 
-let d :Array<number>
-d= [12]
+//statics class haqida malumot berish uchun ishlatiladi 
+  static isFlaying = false
+  static description(){
+    return `bu class haqida malumot beradigan qism `
+  }
 
-let e: (number | string)[];
-// e = [12, "sallom", true]
+  get name():string{
+    return this._name  
+  }
 
-let f: Array<number | boolean > ;
-// f= [true, 2, "salom"]
+  set name(value:string){
+    this._name = value 
+  }
 
-//===================================
-//tuples - kartejlar 
-let h: [number, string]
-h= [12, "salom"]
-// h= ["salom", 12]
+  get year():number{
+    return this._year
+  }
 
-let g : [number, [string, number, boolean]];
-g= [12, ["salom", 12,  false]];
-
-//======================================================
-//enums
-enum Gender {
-    Male = "Erkak", 
-    Female = "Ayol"
+  set year(value:number){
+    if(this._name === "Cobolt TwinTurbo"){
+        if(value > 2000 && value < 2014){
+            this._year = value
+        }else{
+            console.log("Nexia rusumli avtomobillar siz kiritgan yilda ishlap chiqarilmagan ")
+        }
+    }
+  }
 }
 
-// console.log(Gender.Male, Gender.Female)
-// console.log(Gender[Gender.Male], Gender[Gender.Female])
+const Nexia = new Car("Nexia", 2014);
+const Cobolt = new Car("Cobolt", 2022);
 
-enum G {
-    A = 10, 
-    B, 
-    C =23, 
-    D
-}
+// console.log(Nexia);
+console.log(Cobolt);
+Cobolt.name = "Cobolt TwinTurbo"
+Cobolt.year= 2013
+console.log(Cobolt)
 
-// console.log(G[G.A], G.B, G.C, G.D)
 
-enum H {
-    A = "Salom",
-    B = "TypeScipt"
-}
-console.log(H.A, H.B)
-
-const enum I {
-    A = "salom",
-    B = 10,
-    C = 23
-}
-
-console.log(I.A, I.B)
-// console.log(I[I.A], I[I.B])
+// if(Nexia instanceof Car){
+//     console.log("Tegishli")
+// }else{
+//     console.log("Tegishli emas")
+// }

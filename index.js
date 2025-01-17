@@ -1,47 +1,54 @@
 "use strict";
-// array tuples  enums
-let a = [];
-a = [1, 2, true, "salom"];
-let b = [1, 2, 3, 5];
-b = [34, 34, 23];
-let c;
-c = [12, 23];
-let d;
-d = [12];
-let e;
-// e = [12, "sallom", true]
-let f;
-// f= [true, 2, "salom"]
-//===================================
-//tuples - kartejlar 
-let h;
-h = [12, "salom"];
-// h= ["salom", 12]
-let g;
-g = [12, ["salom", 12, false]];
-//======================================================
-//enums
-var Gender;
-(function (Gender) {
-    Gender["Male"] = "Erkak";
-    Gender["Female"] = "Ayol";
-})(Gender || (Gender = {}));
-// console.log(Gender.Male, Gender.Female)
-// console.log(Gender[Gender.Male], Gender[Gender.Female])
-var G;
-(function (G) {
-    G[G["A"] = 10] = "A";
-    G[G["B"] = 11] = "B";
-    G[G["C"] = 23] = "C";
-    G[G["D"] = 24] = "D";
-})(G || (G = {}));
-// console.log(G[G.A], G.B, G.C, G.D)
-var H;
-(function (H) {
-    H["A"] = "Salom";
-    H["B"] = "TypeScipt";
-})(H || (H = {}));
-console.log(H.A, H.B);
-console.log("salom" /* I.A */, 10 /* I.B */);
-// console.log(I[I.A], I[I.B])
+class Car {
+    constructor(name, year) {
+        this._name = "Nexia";
+        this._year = 2014;
+        this._name = name;
+        this._year = year;
+    }
+    //methods
+    info(value) {
+        return `${this._name} moshinasi ${this._year + value} yilda ishlap chiqarilgan`;
+    }
+    //methods 2
+    info2(text) {
+        return `${this._name} ${text} ${this._year} yilda ishlap chiqarilgan `;
+    }
+    static description() {
+        return `bu class haqida malumot beradigan qism `;
+    }
+    get name() {
+        return this._name;
+    }
+    set name(value) {
+        this._name = value;
+    }
+    get year() {
+        return this._year;
+    }
+    set year(value) {
+        if (this._name === "Cobolt TwinTurbo") {
+            if (value > 2000 && value < 2014) {
+                this._year = value;
+            }
+            else {
+                console.log("Nexia rusumli avtomobillar siz kiritgan yilda ishlap chiqarilmagan ");
+            }
+        }
+    }
+}
+//statics class haqida malumot berish uchun ishlatiladi 
+Car.isFlaying = false;
+const Nexia = new Car("Nexia", 2014);
+const Cobolt = new Car("Cobolt", 2022);
+// console.log(Nexia);
+console.log(Cobolt);
+Cobolt.name = "Cobolt TwinTurbo";
+Cobolt.year = 2013;
+console.log(Cobolt);
+// if(Nexia instanceof Car){
+//     console.log("Tegishli")
+// }else{
+//     console.log("Tegishli emas")
+// }
 //# sourceMappingURL=index.js.map
