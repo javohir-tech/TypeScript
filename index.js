@@ -7,10 +7,10 @@ class Person {
         this._age = age;
     }
     seyHello() {
-        return `Salom Men ${this._name} yoshim ${this._age} daman`;
+        return `Salom mening ismim ${this._name} va meni yoshim ${this._age}  da `;
     }
 }
-class Studend extends Person {
+class Student extends Person {
     constructor(name, age, group, course) {
         super(name, age);
         this._group = "";
@@ -18,9 +18,10 @@ class Studend extends Person {
         this._group = group;
         this._course = course;
     }
+    ;
     seyHello() {
         const parentText = super.seyHello();
-        return `${parentText} . men ${this._group} da ${this._course} kurs talabasi bolip oqiyman `;
+        return `${parentText} . Men ${this._group} da  ${this._course} kurs talabasiman `;
     }
 }
 class Teacher extends Person {
@@ -30,20 +31,19 @@ class Teacher extends Person {
         this._darslar = darslar;
     }
     info() {
-        return `men ${this._darslar[0]} fanidan dars beraman `;
+        const parent = super.seyHello();
+        return `${parent}. men ${this._darslar[0]} fanidan dars beraman `;
     }
 }
 const Javohir = new Person("Javohir", 20);
 console.log(Javohir);
 console.log(Javohir.seyHello());
-const Suvonov = new Studend("Suvonov", 20, "17-23 guruh", 2);
+const Suvonov = new Student("Suvonov", 19, "!7-23 guruh", 2);
 console.log(Suvonov);
 console.log(Suvonov.seyHello());
 const newStudent = Suvonov;
 console.log(newStudent);
 console.log(newStudent.seyHello());
-const teacher = new Teacher("Shuhrat", 26, ["Fizika", "AI"]);
-console.log(teacher);
-console.log(teacher.seyHello());
-console.log(teacher.info());
+const Shuhrat = new Teacher("Shuhrat", 26, ["Fizika", "AI"]);
+console.log(Shuhrat.info());
 //# sourceMappingURL=index.js.map
