@@ -1,4 +1,9 @@
 "use strict";
+// interface IPerson {
+//   _name: string;
+//   _age?: number;
+//   seyHello(): string;
+// }
 class Person {
     constructor(name, age) {
         this._name = "";
@@ -7,43 +12,24 @@ class Person {
         this._age = age;
     }
     seyHello() {
-        return `Salom mening ismim ${this._name} va meni yoshim ${this._age}  da `;
+        return `salom`;
     }
 }
 class Student extends Person {
-    constructor(name, age, group, course) {
+    constructor(name, age, course, group) {
         super(name, age);
-        this._group = "";
         this._course = 0;
-        this._group = group;
+        this._group = "";
         this._course = course;
+        this._group = group;
     }
-    ;
     seyHello() {
-        const parentText = super.seyHello();
-        return `${parentText} . Men ${this._group} da  ${this._course} kurs talabasiman `;
-    }
-}
-class Teacher extends Person {
-    constructor(name, age, darslar) {
-        super(name, age);
-        this._darslar = [];
-        this._darslar = darslar;
-    }
-    info() {
         const parent = super.seyHello();
-        return `${parent}. men ${this._darslar[0]} fanidan dars beraman `;
+        return `${parent}, yana salom`;
     }
 }
 const Javohir = new Person("Javohir", 20);
 console.log(Javohir);
-console.log(Javohir.seyHello());
-const Suvonov = new Student("Suvonov", 19, "!7-23 guruh", 2);
+const Suvonov = new Student("Suvonov", 20, 2, "17-23 guruh");
 console.log(Suvonov);
-console.log(Suvonov.seyHello());
-const newStudent = Suvonov;
-console.log(newStudent);
-console.log(newStudent.seyHello());
-const Shuhrat = new Teacher("Shuhrat", 26, ["Fizika", "AI"]);
-console.log(Shuhrat.info());
 //# sourceMappingURL=index.js.map

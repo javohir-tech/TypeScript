@@ -1,4 +1,65 @@
-class Person {
+// interface IPerson {
+//   _name: string;
+//   _age?: number;
+//   seyHello(): string;
+// }
+
+// interface bilan bir c=xil nomdagi interface larni yaratsa boladi ularni natijasi yigilip boradi
+// interface IPerson {
+//   _name: string;
+// }
+
+// interface IPerson{
+//   _age : number
+// }
+
+// interface IPerson{
+//   seyHello():string
+// }
+
+//type bir xil nom berip bolmaydi
+// type IPerson = {
+//   _name : string
+// }
+
+// type IPerson = {
+//   _age:number
+// }
+
+// interfase da faqat bitta interfaceda emas bir nechat interface dan meros olishi mumkin
+// interface IPerson{
+//   _name:string
+// }
+
+// interface IPersonTwo{
+//   _age : number
+// }
+
+// interface IPerson3 extends IPerson , IPersonTwo{
+//   seyHello():string
+// }
+
+// bir type dan boshqasi meros ola olmaydi lekin ularni natijasini birlashtirish mumkin
+
+// type IPersonProps = {
+//   _name:string
+// }
+
+// type IpersonProps2 = {
+//   _age : number
+// }
+
+// type IPerson = IPersonProps & IpersonProps2 & {
+//   seyHello():string
+// }
+
+interface IPerson {
+  _name: string;
+  _age: number;
+  seyHello(): string;
+}
+
+class Person implements IPerson {
   _name: string = "";
   _age: number = 0;
 
@@ -7,54 +68,33 @@ class Person {
     this._age = age;
   }
 
-  seyHello():string{
-    return `Salom mening ismim ${this._name} va meni yoshim ${this._age}  da `
+  seyHello(): string {
+    return `salom`;
   }
 }
 
-class Student extends Person {
-  _group: string = "";
+interface IStudent extends IPerson{
+  _course:number;
+  _group:string;
+}
+
+class Student extends Person  implements IStudent{
   _course: number = 0;
+  _group: string = "";
 
-  constructor(name: string, age: number, group:string, course:number){
-    super(name, age)
+  constructor(name: string, age: number, course: number, group: string) {
+    super(name, age);
+    this._course = course;
     this._group = group;
-    this._course = course
-  };
+  }
 
-  seyHello():string{
-    const parentText = super.seyHello()
-    return `${parentText} . Men ${this._group} da  ${this._course} kurs talabasiman `
+  seyHello(): string {
+    const parent = super.seyHello();
+    return `${parent}, yana salom`;
   }
 }
 
-class Teacher extends Person{
-    _darslar : string[] = [];
-
-    constructor(name:string, age:number, darslar : string[]){
-        super(name, age)
-        this._darslar = darslar
-    }
-
-    info():string{
-        const parent = super.seyHello()
-        return `${parent}. men ${this._darslar[0]} fanidan dars beraman `
-    }
-}
-
-const Javohir: Person = new Person("Javohir", 20);
+const Javohir: IPerson = new Person("Javohir", 20);
 console.log(Javohir);
-console.log(Javohir.seyHello());
-
-const Suvonov: Student = new Student ("Suvonov", 19, "!7-23 guruh", 2);
-console.log(Suvonov)
-console.log(Suvonov.seyHello())
-
-const newStudent:Person = <Person>Suvonov
-console.log(newStudent)
-console.log(newStudent.seyHello())
-
-const Shuhrat : Teacher = new Teacher("Shuhrat", 26, ["Fizika", "AI"])
-console.log(Shuhrat.info())
-
-
+const Suvonov: IStudent = new Student("Suvonov", 20, 2, "17-23 guruh");
+console.log(Suvonov);
