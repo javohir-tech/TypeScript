@@ -1,65 +1,12 @@
-// interface IPerson {
-//   _name: string;
-//   _age?: number;
-//   seyHello(): string;
-// }
-
-// interface bilan bir c=xil nomdagi interface larni yaratsa boladi ularni natijasi yigilip boradi
-// interface IPerson {
-//   _name: string;
-// }
-
-// interface IPerson{
-//   _age : number
-// }
-
-// interface IPerson{
-//   seyHello():string
-// }
-
-//type bir xil nom berip bolmaydi
-// type IPerson = {
-//   _name : string
-// }
-
-// type IPerson = {
-//   _age:number
-// }
-
-// interfase da faqat bitta interfaceda emas bir nechat interface dan meros olishi mumkin
-// interface IPerson{
-//   _name:string
-// }
-
-// interface IPersonTwo{
-//   _age : number
-// }
-
-// interface IPerson3 extends IPerson , IPersonTwo{
-//   seyHello():string
-// }
-
-// bir type dan boshqasi meros ola olmaydi lekin ularni natijasini birlashtirish mumkin
-
-// type IPersonProps = {
-//   _name:string
-// }
-
-// type IpersonProps2 = {
-//   _age : number
-// }
-
-// type IPerson = IPersonProps & IpersonProps2 & {
-//   seyHello():string
-// }
 
 interface IPerson {
   _name: string;
   _age: number;
   seyHello(): string;
+  info():string;
 }
 
-class Person implements IPerson {
+abstract class Person implements IPerson {
   _name: string = "";
   _age: number = 0;
 
@@ -71,6 +18,8 @@ class Person implements IPerson {
   seyHello(): string {
     return `salom`;
   }
+
+  abstract info():string
 }
 
 interface IStudent extends IPerson{
@@ -92,9 +41,19 @@ class Student extends Person  implements IStudent{
     const parent = super.seyHello();
     return `${parent}, yana salom`;
   }
+
+  info():string{
+    return ` 
+      Ismi: ${this._name}
+      Yoshi: ${this._age}
+      Kursi : ${this._course}
+      Guruh : ${this._group}
+    `
+  }
 }
 
-const Javohir: IPerson = new Person("Javohir", 20);
-console.log(Javohir);
+// const Javohir: IPerson = new Person("Javohir", 20);
+// console.log(Javohir);
 const Suvonov: IStudent = new Student("Suvonov", 20, 2, "17-23 guruh");
 console.log(Suvonov);
+console.log(Suvonov.info())

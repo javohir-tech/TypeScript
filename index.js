@@ -1,9 +1,4 @@
 "use strict";
-// interface IPerson {
-//   _name: string;
-//   _age?: number;
-//   seyHello(): string;
-// }
 class Person {
     constructor(name, age) {
         this._name = "";
@@ -27,9 +22,18 @@ class Student extends Person {
         const parent = super.seyHello();
         return `${parent}, yana salom`;
     }
+    info() {
+        return ` 
+      Ismi: ${this._name}
+      Yoshi: ${this._age}
+      Kursi : ${this._course}
+      Guruh : ${this._group}
+    `;
+    }
 }
-const Javohir = new Person("Javohir", 20);
-console.log(Javohir);
+// const Javohir: IPerson = new Person("Javohir", 20);
+// console.log(Javohir);
 const Suvonov = new Student("Suvonov", 20, 2, "17-23 guruh");
 console.log(Suvonov);
+console.log(Suvonov.info());
 //# sourceMappingURL=index.js.map
