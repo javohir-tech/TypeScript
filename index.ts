@@ -1,14 +1,24 @@
+// [ private , protected, public, (readonly )]
 
-interface IPerson {
-  _name: string;
+// 1. public bu default holatda elon qilsih propertyni har qanaqasiga ozgartirsa boladi 
+
+// 2. private faqat shu class uchun ishlatiladi 
+
+// 3. protected  boshqa classlarga tasir korsatadi lekin obyektda ishlatip bolmaydi 
+
+// 4. readonly bu oddiy ozgaruvchini const kalit sozi bilan elon qilishdek gap 
+// chunki uni qiymatini ozgartirip bolmaydi 
+
+// const PI:number = 3.14
+// PI = 12
+
+class Person {
+  // _name = string
+  // public _name : string
+  // private _name :  string
+  // protected _name: string;
+  public readonly _name : string
   _age: number;
-  seyHello(): string;
-  info():string;
-}
-
-abstract class Person implements IPerson {
-  _name: string = "";
-  _age: number = 0;
 
   constructor(name: string, age: number) {
     this._name = name;
@@ -16,44 +26,35 @@ abstract class Person implements IPerson {
   }
 
   seyHello(): string {
-    return `salom`;
+    return `Salom men ${this._name} va men ${this._age} yoshdaman `;
   }
-
-  abstract info():string
 }
 
-interface IStudent extends IPerson{
-  _course:number;
-  _group:string;
-}
+class Student extends Person {
+  _group: string;
+  _course: number;
 
-class Student extends Person  implements IStudent{
-  _course: number = 0;
-  _group: string = "";
-
-  constructor(name: string, age: number, course: number, group: string) {
+  constructor(name: string, age: number, group: string, course: number) {
     super(name, age);
-    this._course = course;
     this._group = group;
+    this._course = course;
   }
 
-  seyHello(): string {
-    const parent = super.seyHello();
-    return `${parent}, yana salom`;
-  }
-
-  info():string{
-    return ` 
-      Ismi: ${this._name}
+  info(): string {
+    return `
+      Ismi : ${this._name}
       Yoshi: ${this._age}
-      Kursi : ${this._course}
       Guruh : ${this._group}
-    `
+      Kurs : ${this._course} 
+    `;
   }
 }
 
-// const Javohir: IPerson = new Person("Javohir", 20);
-// console.log(Javohir);
-const Suvonov: IStudent = new Student("Suvonov", 20, 2, "17-23 guruh");
+// Person
+const Javohir: Person = new Person("Javohir", 20);
+console.log(Javohir);
+
+//student
+const Suvonov: Student = new Student("Javohir", 20, "17-23 guruh", 2);
 console.log(Suvonov);
-console.log(Suvonov.info())
+console.log(Suvonov.info());

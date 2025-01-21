@@ -1,39 +1,41 @@
 "use strict";
+// [ private , protected, public, (readonly )]
+// 1. public bu default holatda elon qilsih propertyni har qanaqasiga ozgartirsa boladi 
+// 2. private faqat shu class uchun ishlatiladi 
+// 3. protected  boshqa classlarga tasir korsatadi lekin obyektda ishlatip bolmaydi 
+// 4. readonly bu oddiy ozgaruvchini const kalit sozi bilan elon qilishdek gap 
+// chunki uni qiymatini ozgartirip bolmaydi 
+// const PI:number = 3.14
+// PI = 12
 class Person {
     constructor(name, age) {
-        this._name = "";
-        this._age = 0;
         this._name = name;
         this._age = age;
     }
     seyHello() {
-        return `salom`;
+        return `Salom men ${this._name} va men ${this._age} yoshdaman `;
     }
 }
 class Student extends Person {
-    constructor(name, age, course, group) {
+    constructor(name, age, group, course) {
         super(name, age);
-        this._course = 0;
-        this._group = "";
-        this._course = course;
         this._group = group;
-    }
-    seyHello() {
-        const parent = super.seyHello();
-        return `${parent}, yana salom`;
+        this._course = course;
     }
     info() {
-        return ` 
-      Ismi: ${this._name}
+        return `
+      Ismi : ${this._name}
       Yoshi: ${this._age}
-      Kursi : ${this._course}
       Guruh : ${this._group}
+      Kurs : ${this._course} 
     `;
     }
 }
-// const Javohir: IPerson = new Person("Javohir", 20);
-// console.log(Javohir);
-const Suvonov = new Student("Suvonov", 20, 2, "17-23 guruh");
+// Person
+const Javohir = new Person("Javohir", 20);
+console.log(Javohir);
+//student
+const Suvonov = new Student("Javohir", 20, "17-23 guruh", 2);
 console.log(Suvonov);
 console.log(Suvonov.info());
 //# sourceMappingURL=index.js.map
