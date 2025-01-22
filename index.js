@@ -1,41 +1,55 @@
 "use strict";
-// [ private , protected, public, (readonly )]
-// 1. public bu default holatda elon qilsih propertyni har qanaqasiga ozgartirsa boladi 
-// 2. private faqat shu class uchun ishlatiladi 
-// 3. protected  boshqa classlarga tasir korsatadi lekin obyektda ishlatip bolmaydi 
-// 4. readonly bu oddiy ozgaruvchini const kalit sozi bilan elon qilishdek gap 
-// chunki uni qiymatini ozgartirip bolmaydi 
-// const PI:number = 3.14
-// PI = 12
-class Person {
-    constructor(name, age) {
-        this._name = name;
-        this._age = age;
+var Utils;
+(function (Utils) {
+    function log(text, color, fontSize) {
+        if (fontSize) {
+            console.log(`%c${text}`, `color:${color} ; font-size: ${fontSize}`);
+        }
+        else {
+            console.log(`%c${text}`, `color: ${color}`);
+        }
     }
-    seyHello() {
-        return `Salom men ${this._name} va men ${this._age} yoshdaman `;
+    Utils.log = log;
+    log("salom typescript ", "blue", "24px");
+})(Utils || (Utils = {}));
+Utils.log("Salom dunyo", "red", "64px");
+var Animals;
+(function (Animals) {
+    class Animal {
+        constructor(name) {
+            this.name = name;
+        }
     }
-}
-class Student extends Person {
-    constructor(name, age, group, course) {
-        super(name, age);
-        this._group = group;
-        this._course = course;
+    Animals.Animal = Animal;
+})(Animals || (Animals = {}));
+(function (Animals) {
+    class Tiger extends Animals.Animal {
+        constructor(name, sound) {
+            super(name);
+            this.sound = sound;
+        }
+        sey() {
+            Utils.log(`${this.name} - ${this.sound}`, "yellow", "32px");
+        }
     }
-    info() {
-        return `
-      Ismi : ${this._name}
-      Yoshi: ${this._age}
-      Guruh : ${this._group}
-      Kurs : ${this._course} 
-    `;
-    }
-}
-// Person
-const Javohir = new Person("Javohir", 20);
-console.log(Javohir);
-//student
-const Suvonov = new Student("Javohir", 20, "17-23 guruh", 2);
-console.log(Suvonov);
-console.log(Suvonov.info());
+    Animals.Tiger = Tiger;
+    let Pets;
+    (function (Pets) {
+        class Cat extends Animals.Animal {
+            constructor(name, sound) {
+                super(name);
+                this.sound = sound;
+            }
+            sey() {
+                Utils.log(`${this.name} - ${this.sound}`, "brown", "16px");
+            }
+        }
+        Pets.Cat = Cat;
+    })(Pets = Animals.Pets || (Animals.Pets = {}));
+})(Animals || (Animals = {}));
+const tiger = new Animals.Tiger("Sherxon", "RRRR");
+const cat = new Animals.Pets.Cat("Etik kiygan mushuk", "Myau");
+cat.sey();
+console.log(tiger);
+tiger.sey();
 //# sourceMappingURL=index.js.map
