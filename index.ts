@@ -1,31 +1,60 @@
-class Person{
-  protected _name:string;
-  _age:number
-  constructor(name:string, age:number){
-    this._name = name;
-    this._age = age
+namespace Utils {
+  export function log(text: string, color: string, fontSize?: string): void {
+    if (fontSize) {
+      console.log(`%c${text}`, `color: ${color}; font-size: ${fontSize}`);
+    } else {
+      console.log(`%c${text}`, `color: ${color}`);
+    }
   }
+  log("Salom Dunyo", "red", "32px");
+}
 
-  say():string{
-    return `Salom men ${this._name} va men ${this._age} yoshdaman `
+Utils.log("Salom TypeScript", "blue", "24px");
+
+namespace Animals {
+  export abstract class Animal {
+    protected name: string;
+    constructor(name: string) {
+      this.name = name;
+    }
+
+    abstract say(): void;
   }
 }
 
-class Student extends Person{
-  _course :number;
-  _group : string;
+namespace Animals {
+  export class Tiger extends Animals.Animal {
+    private sound: string;
 
-  constructor (name:string, age:number, course: number, group:string){
-    super(name, age);
-    this._course = course;
-    this._group = group
+    constructor(name:string, sound: string){
+      super(name)
+      this.sound = sound
+    }
+
+    say(): void {
+      Utils.log(`${this.name} - ${this.sound}`, "red", "64px")
+    }
   }
-  say(): string {
-    return `${this._name}`
+
+   export namespace Pets {
+    export class Cat extends Animals.Animal {
+      private sound : string;
+
+      constructor(name:string, sound: string){
+        super(name);
+        this.sound = sound
+      }
+
+      say(): void {
+      Utils.log(`${this.name} - ${this.sound}`, "brown", "48px")
+      }
+    }
   }
 }
 
-const Javohir :Person = new Person("Javohir", 20)
-console.log(Javohir)
-const Suvonov : Student = new  Student("Javohir", 20 , 4, "17-23 guruh")
-console.log(Suvonov.say())
+const tiger : Animals.Tiger = new Animals.Tiger("Sherxon", "rrrr")
+const cat : Animals.Pets.Cat = new Animals.Pets.Cat("Etik kiygan mushuk", "Myau")
+cat.say()
+tiger.say()
+console.log(tiger)
+console.log(cat)

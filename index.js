@@ -1,25 +1,56 @@
 "use strict";
-class Person {
-    constructor(name, age) {
-        this._name = name;
-        this._age = age;
+var Utils;
+(function (Utils) {
+    function log(text, color, fontSize) {
+        if (fontSize) {
+            console.log(`%c${text}`, `color: ${color}; font-size: ${fontSize}`);
+        }
+        else {
+            console.log(`%c${text}`, `color: ${color}`);
+        }
     }
-    say() {
-        return `Salom men ${this._name} va men ${this._age} yoshdaman `;
+    Utils.log = log;
+    log("Salom Dunyo", "red", "32px");
+})(Utils || (Utils = {}));
+Utils.log("Salom TypeScript", "blue", "24px");
+var Animals;
+(function (Animals) {
+    class Animal {
+        constructor(name) {
+            this.name = name;
+        }
     }
-}
-class Student extends Person {
-    constructor(name, age, course, group) {
-        super(name, age);
-        this._course = course;
-        this._group = group;
+    Animals.Animal = Animal;
+})(Animals || (Animals = {}));
+(function (Animals) {
+    class Tiger extends Animals.Animal {
+        constructor(name, sound) {
+            super(name);
+            this.sound = sound;
+        }
+        say() {
+            Utils.log(`${this.name} - ${this.sound}`, "red", "64px");
+        }
     }
-    say() {
-        return `${this._name}`;
-    }
-}
-const Javohir = new Person("Javohir", 20);
-console.log(Javohir);
-const Suvonov = new Student("Javohir", 20, 4, "17-23 guruh");
-console.log(Suvonov.say());
+    Animals.Tiger = Tiger;
+    let Pets;
+    (function (Pets) {
+        class Cat extends Animals.Animal {
+            constructor(name, sound) {
+                super(name);
+                this.sound = sound;
+            }
+            say() {
+                Utils.log(`${this.name} - ${this.sound}`, "brown", "48px");
+            }
+        }
+        Pets.Cat = Cat;
+    })(Pets = Animals.Pets || (Animals.Pets = {}));
+})(Animals || (Animals = {}));
+const tiger = new Animals.Tiger("Sherxon", "rrrr");
+const cat = new Animals.Pets.Cat("Etik kiygan mushuk", "Myau");
+cat.say();
+tiger.say();
+console.log(tiger);
+console.log(cat);
 //# sourceMappingURL=index.js.map
