@@ -1,56 +1,25 @@
 "use strict";
-var Utils;
-(function (Utils) {
-    function log(text, color, fontSize) {
-        if (fontSize) {
-            console.log(`%c${text}`, `color: ${color}; font-size: ${fontSize}`);
-        }
-        else {
-            console.log(`%c${text}`, `color: ${color}`);
-        }
+class Person {
+    constructor(name, age) {
+        this._name = name;
+        this._age = age;
     }
-    Utils.log = log;
-    log("Salom Dunyo", "red", "32px");
-})(Utils || (Utils = {}));
-Utils.log("Salom TypeScript", "blue", "24px");
-var Animals;
-(function (Animals) {
-    class Animal {
-        constructor(name) {
-            this.name = name;
-        }
+    say() {
+        return `Salom men ${this._name} va men ${this._age} yoshdaman `;
     }
-    Animals.Animal = Animal;
-})(Animals || (Animals = {}));
-(function (Animals) {
-    class Tiger extends Animals.Animal {
-        constructor(name, sound) {
-            super(name);
-            this.sound = sound;
-        }
-        say() {
-            Utils.log(`${this.name} - ${this.sound}`, "red", "64px");
-        }
+}
+class Student extends Person {
+    constructor(name, age, course, group) {
+        super(name, age);
+        this._course = course;
+        this._group = group;
     }
-    Animals.Tiger = Tiger;
-    let Pets;
-    (function (Pets) {
-        class Cat extends Animals.Animal {
-            constructor(name, sound) {
-                super(name);
-                this.sound = sound;
-            }
-            say() {
-                Utils.log(`${this.name} - ${this.sound}`, "brown", "48px");
-            }
-        }
-        Pets.Cat = Cat;
-    })(Pets = Animals.Pets || (Animals.Pets = {}));
-})(Animals || (Animals = {}));
-const tiger = new Animals.Tiger("Sherxon", "rrrr");
-const cat = new Animals.Pets.Cat("Etik kiygan mushuk", "Myau");
-cat.say();
-tiger.say();
-console.log(tiger);
-console.log(cat);
+    say() {
+        return `${this._name}`;
+    }
+}
+const Javohir = new Person("Javohir", 20);
+console.log(Javohir);
+const Suvonov = new Student("Javohir", 20, 4, "17-23 guruh");
+console.log(Suvonov.say());
 //# sourceMappingURL=index.js.map
