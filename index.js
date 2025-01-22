@@ -3,16 +3,16 @@ var Utils;
 (function (Utils) {
     function log(text, color, fontSize) {
         if (fontSize) {
-            console.log(`%c${text}`, `color:${color} ; font-size: ${fontSize}`);
+            console.log(`%c${text}`, `color: ${color}; font-size: ${fontSize}`);
         }
         else {
             console.log(`%c${text}`, `color: ${color}`);
         }
     }
     Utils.log = log;
-    log("salom typescript ", "blue", "24px");
+    log("Salom Dunyo", "red", "32px");
 })(Utils || (Utils = {}));
-Utils.log("Salom dunyo", "red", "64px");
+Utils.log("Salom TypeScript", "blue", "24px");
 var Animals;
 (function (Animals) {
     class Animal {
@@ -28,8 +28,8 @@ var Animals;
             super(name);
             this.sound = sound;
         }
-        sey() {
-            Utils.log(`${this.name} - ${this.sound}`, "yellow", "32px");
+        say() {
+            Utils.log(`${this.name} - ${this.sound}`, "red", "64px");
         }
     }
     Animals.Tiger = Tiger;
@@ -40,16 +40,17 @@ var Animals;
                 super(name);
                 this.sound = sound;
             }
-            sey() {
-                Utils.log(`${this.name} - ${this.sound}`, "brown", "16px");
+            say() {
+                Utils.log(`${this.name} - ${this.sound}`, "brown", "48px");
             }
         }
         Pets.Cat = Cat;
     })(Pets = Animals.Pets || (Animals.Pets = {}));
 })(Animals || (Animals = {}));
-const tiger = new Animals.Tiger("Sherxon", "RRRR");
+const tiger = new Animals.Tiger("Sherxon", "rrrr");
 const cat = new Animals.Pets.Cat("Etik kiygan mushuk", "Myau");
-cat.sey();
+cat.say();
+tiger.say();
 console.log(tiger);
-tiger.sey();
+console.log(cat);
 //# sourceMappingURL=index.js.map
