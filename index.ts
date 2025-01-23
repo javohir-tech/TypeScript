@@ -1,60 +1,38 @@
-namespace Utils {
-  export function log(text: string, color: string, fontSize?: string): void {
-    if (fontSize) {
-      console.log(`%c${text}`, `color: ${color}; font-size: ${fontSize}`);
-    } else {
-      console.log(`%c${text}`, `color: ${color}`);
-    }
-  }
-  log("Salom Dunyo", "red", "32px");
+// typeScript generic type
+
+type A<T> = T;
+type B = A<string>;
+type C = A<number>;
+type D = A<boolean>;
+type E = A<"TS">;
+
+let arr: number[] = [1, 2, 3 ];
+let arr1 : Array<string> = ["salom", "dunyo"];
+
+type MyArray<T> = T[];
+const arr3 :MyArray<number | string> = [12, "salom"]
+
+// function myFunction<T>(x:T):T{
+//   return x
+// }
+
+// const result = myFunction("salom")
+// const result = myFunction(12)
+// const result:string = myFunction("salom")
+// console.log(result)
+
+const myFunction = <T>(x:T):T =>{
+  return x
 }
 
-Utils.log("Salom TypeScript", "blue", "24px");
-
-namespace Animals {
-  export abstract class Animal {
-    protected name: string;
-    constructor(name: string) {
-      this.name = name;
-    }
-
-    abstract say(): void;
-  }
+const echo:<T>(x:T) => T = <T>(x:T):T =>{
+  return x
 }
 
-namespace Animals {
-  export class Tiger extends Animals.Animal {
-    private sound: string;
+type ECHO = <T>(x:T) => T
 
-    constructor(name:string, sound: string){
-      super(name)
-      this.sound = sound
-    }
-
-    say(): void {
-      Utils.log(`${this.name} - ${this.sound}`, "red", "64px")
-    }
-  }
-
-   export namespace Pets {
-    export class Cat extends Animals.Animal {
-      private sound : string;
-
-      constructor(name:string, sound: string){
-        super(name);
-        this.sound = sound
-      }
-
-      say(): void {
-      Utils.log(`${this.name} - ${this.sound}`, "brown", "48px")
-      }
-    }
-  }
+const echo2:ECHO = <T>(x:T):T=>{
+  return x
 }
 
-const tiger : Animals.Tiger = new Animals.Tiger("Sherxon", "rrrr")
-const cat : Animals.Pets.Cat = new Animals.Pets.Cat("Etik kiygan mushuk", "Myau")
-cat.say()
-tiger.say()
-console.log(tiger)
-console.log(cat)
+const result = echo2<string>("salom")
