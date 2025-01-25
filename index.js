@@ -1,23 +1,19 @@
 "use strict";
-// typeScript generic type
-let arr = [1, 2, 3];
-let arr1 = ["salom", "dunyo"];
-const arr3 = [12, "salom"];
-// function myFunction<T>(x:T):T{
-//   return x
-// }
-// const result = myFunction("salom")
-// const result = myFunction(12)
-// const result:string = myFunction("salom")
-// console.log(result)
-const myFunction = (x) => {
-    return x;
-};
-const echo = (x) => {
-    return x;
-};
-const echo2 = (x) => {
-    return x;
-};
-const result = echo2("salom");
+// // typescript
+// class List<T>{
+//   elements : T[] = [];
+class List {
+    constructor() {
+        this.elemants = [];
+    }
+    add(element) {
+        this.elemants.push(element);
+    }
+}
+const list = new List();
+list.add(12);
+list.add("salom");
+list.add("Dunyo");
+list.add(true);
+console.log(list);
 //# sourceMappingURL=index.js.map

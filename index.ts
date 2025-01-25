@@ -1,38 +1,41 @@
-// typeScript generic type
+// // typescript
+// class List<T>{
+//   elements : T[] = [];
 
-type A<T> = T;
-type B = A<string>;
-type C = A<number>;
-type D = A<boolean>;
-type E = A<"TS">;
-
-let arr: number[] = [1, 2, 3 ];
-let arr1 : Array<string> = ["salom", "dunyo"];
-
-type MyArray<T> = T[];
-const arr3 :MyArray<number | string> = [12, "salom"]
-
-// function myFunction<T>(x:T):T{
-//   return x
+//   add(element:T):void {
+//     this.elements.push(element)
+//   }
 // }
 
-// const result = myFunction("salom")
-// const result = myFunction(12)
-// const result:string = myFunction("salom")
-// console.log(result)
+// const list = new  List<string | number>()
+// list.add("salom")
+// list.add("dunyo")
+// list.add(12)
+// console.log(list)
 
-const myFunction = <T>(x:T):T =>{
-  return x
+// const list2 = new List<boolean | undefined>()
+// list2.add(true)
+// list2.add(undefined)
+// // list2.add(12)
+// console.log(list2)
+
+interface IList<T> {
+  elemants: T[];
+  add(element: T): void;
 }
 
-const echo:<T>(x:T) => T = <T>(x:T):T =>{
-  return x
+type listType = number | string | boolean
+
+class List implements IList<listType> {
+  elemants: listType[] = [];
+  add(element: listType): void {
+    this.elemants.push(element)
+  }
 }
 
-type ECHO = <T>(x:T) => T
-
-const echo2:ECHO = <T>(x:T):T=>{
-  return x
-}
-
-const result = echo2<string>("salom")
+const list = new List()
+list.add(12)
+list.add("salom")
+list.add("Dunyo")
+list.add(true)
+console.log(list)
