@@ -1,43 +1,43 @@
-function identity<T>(value: T): T {
-  return value;
+// class List<T>{
+//   elements: T[] =[];
+
+//   add(element:T):void{
+//     this.elements.push(element)
+//   }
+// }
+
+// type ListType= string | number | boolean
+
+// const list = new List<ListType>()
+
+// list.add("salom")
+// list.add("dunyo")
+// list.add(12)
+// list.add(true)
+
+// console.log(list)
+
+interface IList<T> {
+  elements: T[];
+
+  add(element:T):void;
 }
 
-const numberResult = identity<number>(42);  // numberResult: number
-const stringResult = identity<string>("Hello");  // stringResult: string
-console.log(numberResult)
-console.log(stringResult)
+type ListType = string | boolean | number;
 
-function  salom<T , U>(obj1:T, obj2:U):T&U{
-    return  {...obj1, ...obj2}
+class List implements IList<ListType>{
+    elements: (ListType)[] = [];
+
+    add(element: ListType): void {
+      this.elements.push(element)
+    }
 }
 
-const result = salom({name: "Javohir"}, {age:20})
-console.log(result)
+const list = new List();
 
+list.add("salom")
+list.add(12)
+list.add(true)
 
-interface Box<T>{
-  value : T
-}
-
-const stringBox :Box<string> = {value:"salom"}
-const numberBox :Box<number> ={value:20}
-
-
-class dataStore<T> {
-  private data :T[] = []
-
-  add(element:T):void{
-    this.data.push(element)
-  }
-
-  getItems():T[]{
-    return  this.data
-  }
-}
-
-const stringData = new dataStore<string>()
-stringData.add("salom")
-stringData.add("Dunyo")
-console.log(stringData)
-const itemsData = stringData.getItems()
-console.log(itemsData)
+console.log(list)
+  
